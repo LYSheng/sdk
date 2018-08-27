@@ -63,7 +63,7 @@
                         height : "100",              //二维码的高度
                         background : "#ffffff",       //二维码的后景色
                         foreground : "#000000",        //二维码的前景色
-                        src: 'http://img.mp.itc.cn/upload/20170303/0792ffabfeec42ba9c9afba80d8ff16a_th.gif'             //二维码中间的图片
+                        src: 'https://lysheng.github.io/sdk/icon.png'             //二维码中间的图片
                     });
                 }else{
                     alert(data.message);
