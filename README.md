@@ -1,5 +1,6 @@
 # Js sdk
-Js sdk是生成钱包支付二维码
+Js sdk是生成钱包支付二维码，
+demo.html为示例，可参考使用，demoSuccess.html为支付成功页面。
 
 # CDN
 以下JS为必须引用得
@@ -10,7 +11,7 @@ Js sdk是生成钱包支付二维码
 <script src="./js/sdk.js"></script>
 ```
 
-调用方法:
+# 调用方法:
 ```Javascript
 // 在js中调用
 sdk.getData(sdkId,appkey,orderAmount,orderNo,currencyType,domId);
