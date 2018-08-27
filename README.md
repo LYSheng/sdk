@@ -1,9 +1,5 @@
 # Js sdk
-使用文件说明：
-jquery.min.js     jquery.qrcode.js   utf.js为生成二维码得必备js  sdk.js为调用数据生成二维码得方法   这四个js必须引入
-index.js为你个人引用得js
-# Js sdk
-Js sdk是生成钱包支付二维码得
+Js sdk是生成钱包支付二维码
 
 # CDN
 以下JS为必须引用得
