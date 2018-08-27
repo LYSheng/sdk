@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>二维码支付</title>
+</head>
+<body>
+    <div class="box">
+            <div class="order-left">
+               <div class="left-top">
+                    <p class="order-p"></p>
+                    <p class="order-span order-text"></p>
+                    <p class="order-span order-bh"></p>
+                    <p class="order-span order-text"></p>
+               </div>
+               <div class="left-bottom f14">
+                   <span style="font-weight: bold;">扫码支付</span>
+                   <div class="ewm-box">
+                       <span>使用[N次元钱包]扫码支付</span>
+                       <div class="canvas-box">
+                            <div id="qrcodeCanvas"> 
+                                <div class="canvas-mask">
+                                    二维码失效
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+            <div class="order-right">
+                <div class="right-top">
+                        <p class="f14">
+                                应付金额：<span class="f16 BaicMoney">199 BAIC</span>
+                        </p>
+                </div>
+               
+                <div class="n-Money f14">
+                    <span style="font-weight: bold;">下载N次元钱包</span>
+                    <p>1.使用微信等扫码客户端扫一扫，下载N次元钱包</p>
+                    <div class="ewm2-box">
+                        <div id="dowlon">
+
+                        </div>
+                    </div>
+                    <p>2。在应用商店搜索[N次元]或者[Now Wallet]下载APP</p>
+                </div>
+            </div>
+    </div>
+</body>
+<!-- jq     jq.qrcode   utf为生成二维码得必备js  sdk为调用数据生成二维码得方法   这四个js必须引入 -->
+<!-- index.js为你个人引用得js -->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.qrcode.js"></script>
+<script src="./js/utf.js"></script>
+<script src="./js/sdk.js"></script>
+<script src="./js/index.js"></script>
+</html>
