@@ -51,8 +51,8 @@
     text-align: center;
 }
 #qrcodeCanvas{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
     margin-top: 20px;
     position: relative;
