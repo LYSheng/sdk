@@ -16,7 +16,7 @@ Js sdk是生成钱包支付二维码
 sdk.getData(sdkId,appkey,orderAmount,orderNo,currencyType,domId);
 eg:sdk.getData("999","23","10.888888",'fc2u4hf8723hhc32','BAIC','qrcodeCanvas');
 参数说明：(参数均为必填)
-sdkid：SdkId(999) 
+sdkId：SdkId(999) 
 appkey：App_key(23)  
 orderAmount：订单金额(10.888888) 
 orderNo：订单号(fc2u4hf8723hhc32) 
