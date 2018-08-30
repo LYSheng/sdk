@@ -65,6 +65,11 @@
                         foreground : "#000000",        //二维码的前景色
                         src: 'https://lysheng.github.io/sdk/icon.png'             //二维码中间的图片
                     });
+                    var str = data.porder;
+                    var index = str.lastIndexOf("\-") 
+                    str  = str .substring(0, index);
+                    console.log(str );
+                    sdk.router(str)
                 }else{
                     alert(data.message);
                 }
@@ -80,5 +85,39 @@
                         }
                 }
             });
+        },
+        // 支付结果
+        router:function(porder){
+           var time= setInterval(function(){
+            $.ajax({
+                // url:urlApi+"/paygateway/pos/resultTest",
+                url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
+                type:"post",
+                // contentType: "application/json",
+                dataType:"json",
+                data:{"porder":"yh4ea65gh41ae65t4pxm-123123-23-1535616938658"},
+                success:function(data){
+                   if(data.isSuccess==0){
+                    clearInterval(time)
+                    window.location.href = "./demofail.html";   //失败页面
+                   }else if(data.isSuccess==1){
+                    clearInterval(time)
+                    window.location.href = "./demoSuccess.html";   //成功页面
+                   }else{
+                //    未支付
+                   }
+                },
+                error:function(xhr, ajaxOptions, thrownError){
+                    console.info("error");
+                        if (xhr.status == 200) {
+                            console.log(ajaxOptions);
+                        }
+                        else {
+                            console.log(xhr.status);
+                            // console.log(xhr.responseJSON.error);
+                        }
+                }
+            });
+            },1000)
         }
     }

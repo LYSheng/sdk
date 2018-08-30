@@ -30,7 +30,7 @@ domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器
 // 在js中调用
 第一步在调用sdk.getData(sdkId,appkey,orderAmount,orderNo,currencyType,domId)后，会生成二维码，在生成二维码后可以执行如下代码：
 第二步生成二维码后用户进行支付，支付结果会通知给第三方服务器，前端自行取服务器查询结果   代码如下：
-    var wsServer = 'wss://echo.websocket.org'; //服务器地址 
+    var wsServer = 'wss://echo.websocket.org'; //服务器地址 （现在此地址为 虚拟地址 ）
     var websocket = new WebSocket(wsServer); //创建WebSocket对象
     console.log(websocket.readyState);//查看websocket当前状态
     websocket.onopen = function (evt) {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/index.css">
-    <title>支付成功</title>
+    <title>支付失败</title>
 </head>
 <style>
     .success-box{
@@ -34,55 +34,27 @@
         <div class="order-right">
             <div class="right-top">
                     <p class="f14">
-                            支付金额：<span class="f16 BaicMoney">199 BAIC</span>
+                            应付金额：<span class="f16 BaicMoney">199 BAIC</span>
                     </p>
             </div>
 
         </div>
         <div class="success-box">
             <div class="success-text">
-                <span style="color: deepskyblue;font-weight: bold;">支付成功</span>
-                <sapn id="miao">10</sapn>
+                <span style="color: deepskyblue;font-weight: bold;">支付失败</span>
+                <!-- <sapn id="miao">10</sapn>
                 秒后跳转到商户后台，没有跳转？
-                <a class="aHref" href="">立即跳转</a>
+                <a class="aHref" href="">立即跳转</a> -->
             </div>
             <div class="content-box">
                 <p>商品：XXXX商品</p>
                 <p>交易订单号：XXXXXXXXXXXXXXXXXXXXX</p>
                 <p>交易时间：2018/08/01</p>
-                <p>当前状态：支付成功</p>
+                <p>当前状态：支付失败</p>
             </div>
             <div class="ts">
                 重要提示：NOW  PAY平台及销售商不会以订单异常，系统升级为由，要求你点击任何链接退款。
             </div>
         </div>
 </body>
-<script src="./js/jquery.min.js"></script>
-<script>
-    $(function(){
-         function getUrlParam(name) {
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-                var r = window.location.search.substr(1).match(reg);
-                if (r != null) return unescape(r[2]); return null;
-        }
-        console.log(getUrlParam("id"))
-        if(getUrlParam("id")==1){   //成功
-            
-        }else{   //失败
-
-        }
-        function jump(count) { 
-                window.setTimeout(function(){ 
-                    count--; 
-                    if(count > 0) { 
-                        $('#miao').html(count) 
-                        jump(count); 
-                    } else { 
-                        // location.href="http://jb51.net"; 
-                    } 
-                }, 1000); 
-            } 
-            jump(10); 
-    })
-</script>
 </html>
