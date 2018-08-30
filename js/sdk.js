@@ -90,12 +90,12 @@
         router:function(porder){
            var time= setInterval(function(){
             $.ajax({
-                // url:urlApi+"/paygateway/pos/resultTest",
-                url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
+                url:urlApi+"/paygateway/pos/resultTest",
+                // url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
                 type:"post",
                 // contentType: "application/json",
                 dataType:"json",
-                data:{"porder":"yh4ea65gh41ae65t4pxm-123123-23-1535616938658"},
+                data:{"porder":porder},
                 success:function(data){
                    if(data.isSuccess==0){
                     clearInterval(time)
@@ -105,6 +105,7 @@
                     window.location.href = "./demoSuccess.html";   //成功页面
                    }else{
                 //    未支付
+                console.log("未支付")
                    }
                 },
                 error:function(xhr, ajaxOptions, thrownError){
