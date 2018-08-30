@@ -48,7 +48,7 @@ domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器
 >|message|String|相应信息|
 >|token|String|Token|
 
->###    2.获取Porder
+>###    2.获取Porder 生成二维码  使用钱包扫描二维码
 >
 >```js
 >sdk.getCode(token,sdkId,orderAmount,orderNo,currencyType)
@@ -67,15 +67,12 @@ domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器
 >    "porder": "yh4ea65gh41ae65t4pxm-123123-999-1534925308319-BAIC"
 >}
 >```
-
-：
-
-###    3.通过 轮询，或者websocket查询订单支付结果    如下代码示例:
+>###    3.通过 轮询，或者websocket查询订单支付结果 根据支付结果跳到对应的页面   如下代码示例:  
 ```js
 // 在js中调用
     拿到porder后生成二维码，然后钱包APP扫码进行后续操作
     第一种通过websocket：
-    var wsServer = 'wss://echo.websocket.org'; //服务器地址 （现在此地址为 虚拟地址 ）
+    var wsServer = 'wss://echo.websocket.org'; //查询支付结果地址  （此地址为现为demo地址实际地址应以实际地址调用）
     var websocket = new WebSocket(wsServer); //创建WebSocket对象
     console.log(websocket.readyState);//查看websocket当前状态
     websocket.onopen = function (evt) {
@@ -104,7 +101,7 @@ domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器
               var time= setInterval(function(){
             $.ajax({
                 // url:urlApi+"/paygateway/pos/resultTest",
-                url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
+                url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 查询支付结果地址  （此地址为现为demo地址实际地址应以实际地址调用）
                 type:"post",
                 // contentType: "application/json",
                 dataType:"json",
