@@ -1,19 +1,20 @@
-# Js sdk
-Js sdk是生成钱包支付二维码，
-demo.html为示例，可参考使用，demoSuccess.html为支付成功页面。
 
-# CDN
-以下JS为必须引用得
-```bash
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jquery.qrcode.js"></script>
-<script src="./js/utf.js"></script>
-<script src="./js/sdk.js"></script>
+<h1 align="center">Baic</h1>
+
+<p align="center">Js sdk是生成钱包支付二维码</p>
+
+## Js sdk
+
+```sh
+Js sdk是生成钱包支付二维码， demo.html为示例，可参考使用，demoSuccess.html为支付成功页面。
 ```
+## 配置
 
-# 调用方法:
-```Javascript
-// 在js中调用
+在使用本扩展之前，你需要去 [BAIC商户后台] 注册账号，然后创建应用，获取应用的 APP Id与Key。
+
+## 使用
+
+```js
 sdk.getData(sdkId,appkey,orderAmount,orderNo,currencyType,domId);
 eg:sdk.getData("999","23","10.888888",'fc2u4hf8723hhc32','BAIC','qrcodeCanvas');
 参数说明：(参数均为必填)
@@ -25,11 +26,55 @@ currencyType：货币类型(BAIC)
 domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器得ID名
 ```
 
-# 使用方法:
-```Javascript
+>###    1.获取Token
+>
+>```js
+>sdk.getData(sdkId,appkey);
+>    'appkey' => '23',  //App_key
+>    'sdkId' => SdkId,                              //自己的sdkId
+>```
+>响应示例：
+>
+>```json
+>{
+>    "success": "true",
+>    "message": "获取成功！",
+>    "token": "1252002bd3ff4a418b24b331cd28b0c4"
+>}
+>```
+>|参数|参数类型|参数说明|
+>|:---:|:---:|:---:|
+>|success|String|是否校验成功:true成功;false不成功|
+>|message|String|相应信息|
+>|token|String|Token|
+
+>###    2.获取Porder
+>
+>```js
+>sdk.getCode(token,sdkId,orderAmount,orderNo,currencyType)
+>    'token' => '1252002bd3ff4a418b24b331cd28b0c4',  //获取的token
+>    'sdkId' => SdkId,                              //自己的sdkId
+>    'orderAmount' => 10,                            //订单金额
+>    'currencyType' => 'BAIC',                       //币种
+>    'orderNo' => '12121212',                        //自己系统中的订单号
+>```
+>响应示例：
+>
+>```json
+>{
+>    "success": "true",
+>    "message": "請求成功！",
+>    "porder": "yh4ea65gh41ae65t4pxm-123123-999-1534925308319-BAIC"
+>}
+>```
+
+：
+
+###    3.通过 轮询，或者websocket查询订单支付结果    如下代码示例:
+```js
 // 在js中调用
-第一步在调用sdk.getData(sdkId,appkey,orderAmount,orderNo,currencyType,domId)后，会生成二维码，在生成二维码后可以执行如下代码：
-第二步生成二维码后用户进行支付，支付结果会通知给第三方服务器，前端自行取服务器查询结果   代码如下：
+    拿到porder后生成二维码，然后钱包APP扫码进行后续操作
+    第一种通过websocket：
     var wsServer = 'wss://echo.websocket.org'; //服务器地址 （现在此地址为 虚拟地址 ）
     var websocket = new WebSocket(wsServer); //创建WebSocket对象
     console.log(websocket.readyState);//查看websocket当前状态
@@ -49,13 +94,57 @@ domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器
         window.location.href = "./demoSuccess.html";   //成功页面
     }else{
         // 否则跳转失败
-        window.location.href = "./demoSuccess.html";    //失败页面
+        window.location.href = "./demofail.html";    //失败页面
     }
     };
     websocket.onerror = function (evt) {
     //产生异常
     }; 
+    第二种轮询：
+              var time= setInterval(function(){
+            $.ajax({
+                // url:urlApi+"/paygateway/pos/resultTest",
+                url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
+                type:"post",
+                // contentType: "application/json",
+                dataType:"json",
+                data:{"porder":"yh4ea65gh41ae65t4pxm-123123-23-1535616938658"},
+                success:function(data){
+                   if(data.isSuccess==0){
+                    clearInterval(time)
+                    window.location.href = "./demofail.html";   //失败页面
+                   }else if(data.isSuccess==1){
+                    clearInterval(time)
+                    window.location.href = "./demoSuccess.html";   //成功页面
+                   }else{
+                //    未支付
+                   }
+                },
+                error:function(xhr, ajaxOptions, thrownError){
+                    console.info("error");
+                        if (xhr.status == 200) {
+                            console.log(ajaxOptions);
+                        }
+                        else {
+                            console.log(xhr.status);
+                            // console.log(xhr.responseJSON.error);
+                        }
+                }
+            });
+            },1000)
 
 
 ```
+
+
+## 参考
+- [BAIC网关接口]
+
+## License
+
+MIT
+
+
+
+
 
