@@ -69,7 +69,7 @@
                     var index = str.lastIndexOf("\-") 
                     str  = str .substring(0, index);
                     console.log(str );
-                    sdk.router(str)
+                    // sdk.router(str)
                 }else{
                     alert(data.message);
                 }
