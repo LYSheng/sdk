@@ -11,7 +11,11 @@ Js sdk是生成钱包支付二维码， demo.html为示例，可参考使用，d
 ## 配置
 
 在使用本扩展之前，你需要去 [BAIC商户后台] 注册账号，然后创建应用，获取应用的 APP Id与Key。
-
+必须引入文档中以下几个文件：
+<script src="jquery.min.js"></script>    //jq
+<script src="jquery.qrcode.js"></script>  //jq生成二维码包
+<script src="utf.js"></script>             //二维码依赖得 
+<script src="sdk.js"></script>             //生成二维码得js
 ## 使用
 
 ```js
