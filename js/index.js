@@ -8,7 +8,8 @@
     // currencyType：货币类型(BAIC) 
     // domId:二维码绑定得元素(qrcodeCanvas) 该domId名称为要绑定得容器得ID名
 // 第一步调用生成钱包支付二维码
-sdk.getData("999","23","10.888888",'fc2u4hf8723hhc32','BAIC','qrcodeCanvas');
+// sdk.getData(sdkid,appkey,orderAmount,orderNo,currencyType,domId);
+sdk.getData("0258b2a6-cfd6-4c46-8577-a3d922c83e00","402c2c6f5683fc69672097dc0553b987","200",'fc2u4hf8723hhc32','USDT','qrcodeCanvas');
 // 第二步生成二维码后用户进行支付，支付结果会通知给第三方服务器，前端自行取服务器查询结果   代码如下：
     // var wsServer = 'wss://echo.websocket.org'; //服务器地址  
     // var websocket = new WebSocket(wsServer); //创建WebSocket对象
@@ -35,4 +36,5 @@ sdk.getData("999","23","10.888888",'fc2u4hf8723hhc32','BAIC','qrcodeCanvas');
     // websocket.onerror = function (evt) {
     // //产生异常
     // }; 
+    // 或者轮询
         
