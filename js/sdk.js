@@ -8,7 +8,7 @@
         console.log(iA-iB)
     }
 }
-    var urlApi="http://140.143.225.189:80"
+    var urlApi="http://140.143.225.189:8080"
     // if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
     //    console.log("1111111")
     // } else {
@@ -69,7 +69,7 @@
                     var index = str.lastIndexOf("\-") 
                     str  = str .substring(0, index);
                     console.log(str );
-                    sdk.router(str)
+                    // sdk.router(str)
                 }else{
                     alert(data.message);
                 }
