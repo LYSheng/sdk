@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/index.css">
     <title>二维码支付</title>
 </head>
+<style>
+    
+</style>
 <body>
     <div class="box">
             <div class="order-left">
@@ -28,6 +31,30 @@
                             </div>
                        </div>
                    </div>
+               </div>
+               <div class="submit-box">
+                   <p>请输入参数</p>
+                   <div class="input-box">
+                       <span>sdkid：</span>
+                       <input type="text" class="Input" value="0258b2a6-cfd6-4c46-8577-a3d922c83e00" id="sdkidInput">
+                   </div>
+                   <div class="input-box">
+                    <span>appkey：</span>
+                    <input type="text" class="Input" id="appkeyInput" value="402c2c6f5683fc69672097dc0553b987">
+                </div>
+                <div class="input-box">
+                    <span>orderAmount：（订单金额）</span>
+                    <input type="text" class="Input" id="orderAmountInput" value="200">
+                </div>
+                <div class="input-box">
+                    <span>orderNo：（订单号）</span>
+                    <input type="text" class="Input" id="orderNoInput" value="fc2u4hf8723hhc32">
+                </div>
+                <div class="input-box">
+                    <span>currencyType：（货币类型）</span>
+                    <input type="text" class="Input" id="currencyTypeInput" value="USDT">
+                </div>
+                <div id="submit">一键生成</div>
                </div>
             </div>
             <div class="order-right">

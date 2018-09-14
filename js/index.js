@@ -37,4 +37,15 @@ sdk.getData("0258b2a6-cfd6-4c46-8577-a3d922c83e00","402c2c6f5683fc69672097dc0553
     // //产生异常
     // }; 
     // 或者轮询
+    var sdkid,appkey,orderAmount,orderNo,currencyType="";
+    $("#submit").on("click",function(){
+        $('#qrcodeCanvas').html("")
+        sdkid=$("#sdkidInput").val()
+        appkey=$("#appkeyInput").val()
+        orderAmount=$("#orderAmountInput").val()
+        orderNo=$("#orderNoInput").val()
+        currencyType=$("#currencyTypeInput").val()
+        // console.log()appkeyInput  orderAmountInput  orderNoInput  currencyTypeInput
+        sdk.getData(sdkid,appkey,orderAmount,orderNo,currencyType,'qrcodeCanvas');
+    })
         

@@ -56,6 +56,7 @@
                 // data:JSON.stringify({"token":token,"sdkId":sdkId,"orderAmount":orderAmount,"orderNo":orderNo,"currencyType":currencyType}),
                 success:function(data){
                 if(data.success=="true"){
+                    console.log(data.success)
                     $("#"+domId+"").qrcode({
                         render : "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
                         text : data.porder,    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
@@ -71,6 +72,7 @@
                     console.log(str );
                     sdk.router(str)
                 }else{
+                    console.log(data.success)
                     alert(data.message);
                 }
                 },

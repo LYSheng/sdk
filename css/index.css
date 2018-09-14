@@ -76,3 +76,21 @@
     color: #fff;
     line-height: 25px;
 }
+.submit-box{
+
+}
+.input-box{
+        
+}
+#submit{
+    padding: 8px 20px;
+    color: #fff;
+    background: #4578d6;
+    border-radius: 4px;
+    fone-size:14px;
+    width: 13%;
+    /* margin:  0 auto; */
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0px;
+}
