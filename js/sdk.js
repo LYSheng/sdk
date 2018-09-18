@@ -69,6 +69,8 @@
                     var str = data.porder;
                     var index = str.lastIndexOf("\-") 
                     str  = str .substring(0, index);
+                    var newIndex=str.lastIndexOf("\-");
+                    str  = str .substring(0, newIndex);
                     console.log(str );
                     sdk.router(str)
                 }else{
