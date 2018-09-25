@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维码</title>
+</head>
+<style>
+*{
+    padding: 0px;
+    margin: 0px;
+}
+p,ul,li,input,select,option{
+    margin: 0;
+    padding: 0;
+    /*字体设置*/
+    font-size: 16px;
+    font-family: "Microsoft Yahei",sans-serif;
+    /* 去掉列表的原点 */
+    list-style: none;
+    /* 默认鼠标 */
+    cursor: default;
+}
+
+input,img{
+    margin: 0;
+    padding: 0;
+    outline-style: none;
+    vertical-align: bottom; 
+}
+.ul-box{
+    width:100%;
+    margin: 0 auto;
+}
+.li-box{
+    padding: 10px;
+    overflow: hidden;
+}
+.select-box,.input-box,.option-name{
+    /* margin-top: 5px; */
+    width: 260px;
+    height: 25px;
+    cursor: pointer;
+    padding: 2px 0px;
+}
+.mock-box{
+    width: 100%;
+}
+.li-box span{
+    display: block;
+    width:180px;
+    float: left;
+    text-align: left;
+    margin: 5px 0px;
+}
+#getToken{
+    padding: 6px 20px;
+    background-color: #0e7ece;
+    width: 60px;
+    margin-right: 80px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 3px;
+}
+#submit{
+    padding: 10px 20px;
+    background-color: #0e7ece;
+    border-radius: 3px;
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+}
+.sub-box{
+    text-align: center;
+}
+</style>
+<body>
+    <div class="mock-box">
+        <h2>商户模拟交易</h2>
+        <ul class="ul-box">
+            <li class="li-box">
+                <span>测试类型</span>
+                <input type="text" class="input-box" value="H5/WEB" disabled="disabled" >
+            </li>
+            <li class="li-box">
+                <span>商户ID：</span>
+                <input type="text" class="input-box" value="" id="idId">
+            </li>
+            <li class="li-box">
+                <span>商户名称：</span>
+                <input type="text" class="input-box" value="" id="textId">
+            </li>
+            <li class="li-box">
+                <span>APPkey：</span>
+                <input type="text" class="input-box" value="" id="keyId">
+            </li>
+            <li class="li-box">
+                <span>SDKID:</span>
+                <input type="text" class="input-box" value="" id="sdkId">
+            </li>
+            <li class="li-box">
+                <span id="getToken">获取token</span>
+                <input type="text" class="input-box" value="" id="tokenId">
+            </li>
+            <li class="li-box">
+                <span>商户订单号：</span>
+                <input type="text" class="input-box" value="" id="noId">
+            </li>
+            <li class="li-box">
+                <span>支持币种:</span>
+                <select class="select-box" id="bzId">
+                    <option class="option-name" value="USDT">USDT</option>
+                    <option class="option-name" value="BAIC">BAIC</option>
+                    <option class="option-name" value="ETH">ETH</option>
+                    <option class="option-name" value="USDT ERC20">USDT ERC20</option>
+                    <option class="option-name" value="TEST">TEST</option>
+                    <option class="option-name" value="SHIT">SHIT</option>
+                    <option class="option-name" value="BJIT">BJIT</option>
+                    <option class="option-name" value="NBNB">NBNB</option>
+                    <option class="option-name" value="WWW">WWW</option>
+                    <option class="option-name" value="HHH">HHH</option>
+                    <option class="option-name" value="test2asd222">test2asd222</option>
+                    <option class="option-name" value="MOCK">MOCK</option>
+                    <option class="option-name" value="TZBI">TZBI</option>
+                    <option class="option-name" value="GW">GW</option>
+                </select>
+            </li>
+            <li class="li-box">
+                <span>金额:</span>
+                <input type="text" class="input-box" value="" id="moneyId">
+            </li>
+            <li class="li-box">
+                <span>订单支付加密方式:</span>
+                <select class="select-box">
+                    <option class="option-name" value="1">暂无</option>
+                </select>
+            </li>
+            <li class="li-box">
+                <span>交易返回加密方式:</span>
+                <select class="select-box">
+                    <option class="option-name" value="1">暂无</option>
+                </select>
+            </li>
+            <li class="li-box">
+                <span>商品名称:</span>
+                <input type="text" class="input-box" value="" id="nameId">
+            </li>
+            <li class="li-box sub-box">
+                <span id="submit">提交</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+    var flag=false;
+    var urlApi="http://140.143.225.189:8080";
+    var biApi="http://222.73.149.173:8080"
+    var sdkId,appKey,token,orderAmount,orderNo,currencyType,idId,textId,nameId='';
+    $("#getToken").on("click",function(){
+        
+        if($("#keyId").val()==""){
+            return alert("appKey不可为空")
+        }
+        if($("#sdkId").val()==""){
+            return alert("sdkId不可为空")
+        }
+        appKey=$("#keyId").val()
+        sdkId=$("#sdkId").val()
+        $.ajax({
+                url:urlApi+"/paygateway/sdk/getToken?sdkId="+sdkId+"&appKey="+appKey,
+                type:"get",
+                // contentType: "application/json",
+                dataType:"json",
+                success:function(data){
+                    console.log(data)
+                    if(data.success=="true"){
+                    //    console.log(data)
+                    $("#tokenId").val(data.token)
+                    }else{
+                        alert(data.message)
+                    }
+                },
+                error:function(xhr, ajaxOptions, thrownError){
+                    console.info("error");
+                        if (xhr.status == 200) {
+                            console.log(ajaxOptions);
+                        }
+                        else {
+                            console.log(xhr.status);
+                            console.log(xhr.responseJSON.error);
+                        }
+                }
+            });
+    });
+
+    $("#submit").on("click",function(){
+        if($("#bzId option:selected").val()==""){
+            return alert("币种不可为空")
+        }
+        if($("#idId").val()==""){
+            return alert("商户id不可为空")
+        }
+        if($("#textId").val()==""){
+            return alert("商户名称不可为空")
+        }if($("#keyId").val()==""){
+            return alert("appKey不可为空")
+        }
+        if($("#tokenId").val()==""){
+            return alert("token不可为空")
+        }
+        if($("#noId").val()==""){
+            return alert("商户订单号不可为空")
+        }
+        if($("#moneyId").val()==""){
+            return alert("金额不可为空")
+        }
+        if($("#nameId").val()==""){
+            return alert("商品名称不可为空")
+        }
+        token=$("#tokenId").val();
+        orderAmount=$("#moneyId").val();   //金额
+        orderNo=$("#noId").val();     //订单号
+        currencyType=$("#bzId option:selected").val();   //币种
+        idId=$("#idId").val()//商户id  idId
+        textId=$("#textId").val()//商户名称 textId
+        appKey=$("#keyId").val()//appKey
+        sdkId=$("#sdkId").val()//sdkId
+        nameId=$("#nameId").val()//商品名称 nameId
+            $.ajax({
+                url:urlApi+"/paygateway/sdk/getPorder",
+                type:"post",
+                dataType:"json",
+                data:{"token":token,"sdkId":sdkId,"orderAmount":orderAmount,"orderNo":orderNo,"currencyType":currencyType},
+                success:function(data){
+                if(data.success=="true"){
+                    console.log(data)
+                    window.location.href = './newDemo.html?orderAmount='+orderAmount+'&orderNo='+orderNo+'&currencyType='+currencyType+'&idId='+idId+'&textId='+encodeURI(encodeURI(textId))+'&appKey='+appKey+'&sdkId='+sdkId+'&nameId='+nameId+'&porder='+data.porder;
+                }else{
+                    console.log(data.message)
+                    alert(data.message);
+                }
+                },
+                error:function(xhr, ajaxOptions, thrownError){
+                    console.info("error.");
+                        if (xhr.status == 200) {
+                            console.log(ajaxOptions);
+                        }
+                        else {
+                            console.log(xhr.status);
+                            console.log(xhr.responseJSON.error);
+                        }
+                }
+            });
+    });
+</script>
+</html>

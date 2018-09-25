@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单支付页面</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        font-family: "微软雅黑"
+    }
+    .header-box{
+        height: 42px;
+        width: 100%;
+        background:rgba(255,255,255,1);
+        box-shadow:0px 3px 8px 0px rgba(139,139,139,0.14);
+        overflow: hidden;
+        padding-left: 20px;
+    }
+    .pay-ms{
+        color:rgba(45,40,40,1);
+        font-size: 12px;
+    }
+    .logo{
+        display: block;
+        width: 101px;
+        height: 21px;
+        background: url(./image/logo.png) center;
+        margin-top: 10px;
+        
+    }
+    .content{
+        padding: 20px;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 71px;
+    }
+    .pay-ms{
+        color:rgba(45,40,40,1);
+    }
+    .pay-text{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pay-name{
+        color:rgba(28,28,28,1);
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .pay-money{
+        color:rgba(252,160,44,1);
+        font-weight: bold;
+    }
+    .pay-type{
+        font-size: 12px;
+        color:rgba(28,28,28,1);
+        font-weight: normal;
+    }
+    .ewm-box{
+        width: 90%;
+        background: rgba(255,255,255,1);
+        box-shadow: 0px 8px 30px -3px rgba(0,0,0,0.14);
+        border-radius: 6px 0px 6px 6px;
+        padding: 47px 5%;
+        overflow: hidden;
+    }
+    .pay-detail{
+        background:rgba(179,179,179,1);
+        padding: 3px 15px;
+        font-size: 8px;
+        color: #fff;
+    }
+    .pay-top{
+        text-align: right;
+        margin-top: 5px;
+    }
+    .ewm-bgbox{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sys-text{
+        color:rgba(28,28,28,1);
+        font-size: 12px;
+        text-align: center;
+    }
+    .pay-money{
+        
+        padding: 10px 0px;
+    }
+    .pay-new-money{
+        text-align: center;
+        font-size: 20px;
+    }
+    #ewmCode{
+        width: 150px;
+        height: 150px;
+        background: url(./image/付款码.png)no-repeat center center/cover;
+        margin-left: 3px;
+    }
+    .ewm-left{
+        /* display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap; */
+    }
+    .sys-ms{
+        color:rgba(118,118,118,1);
+        font-size: 12px;
+    }
+    .ewm-icon{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: url(./image/扫一扫.png)no-repeat center center/cover;
+    }
+    .ewm-sys-txt{
+        text-align: center;
+    }
+    .ewm-right{
+        width: 118px;
+        height: 108px;
+        background: url(./image/气泡.png)no-repeat center center/cover;
+        margin-top: -141px;
+        margin-left: 7px;
+    }
+    .Client-box{
+      float: right;
+      width: 84px;
+    }
+    .Client-ewm{
+        height: 80px;
+        background: url(./image/公众号.png)no-repeat center center/cover;
+        width: 80px;
+        
+    }
+    .Client-text{
+        font-size: 10px;
+        color:rgba(111,111,111,1);
+        line-height:1.5em;
+    }
+</style>
+<body>
+    <div class="box">
+        <header class="header-box">
+            <span class="logo">
+
+            </span>
+        </header>
+        <div class="content">
+                <p class="pay-ms">正在使用即时到账交易</p>
+                <div class="pay-text">
+                    <span class="pay-name">全家</span>
+                    <span class="pay-money">
+                        <span class="pay-nei-money">12</span>
+                        <span class="pay-type">USDT</span>
+                    </span>
+                </div>
+                <div class="pay-ewm">
+                    <div class="pay-top">
+                        <span class="pay-detail">订单详情</span>
+                    </div>
+                    <div class="ewm-box">
+                        <div class="ewm-bgbox">
+                            <div class="ewm-left">
+                                <p class="sys-text">
+                                    扫一扫付款(
+                                    <span class="sys-type pay-type">USDT</span>
+                                    )
+                                </p>
+                                <p class="pay-money pay-new-money pay-nei-money">98.00</p>
+                                <div id="ewmCode"></div>
+                                <div class="ewm-sys-txt">
+                                    <span class="ewm-icon"></span>
+                                    <span class="sys-ms">打开手机钱包扫一扫付款</span>
+                                </div>
+                            </div>
+                            <div class="ewm-right">
+        
+                            </div>
+                        </div>
+                        <div class="Client-box">
+                            <div class="Client-ewm"></div>
+                            <span class="Client-text">
+                                微信等扫码客户端扫描下载钱包
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+    </div>
+</body>
+<!-- jq     jq.qrcode   utf为生成二维码得必备js  sdk为调用数据生成二维码得方法   这四个js必须引入 -->
+<!-- index.js为你个人引用得js -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.qrcode.js"></script>
+<script src="../js/utf.js"></script>
+<script src="../js/sdk.js"></script>
+<script>
+    function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+         //商户名称 textId  orderNo订单号 idId商户id appKey sdkId nameId商品名称
+        $(".pay-nei-money").text(getUrlParam('orderAmount')) //orderAmount 金额
+        $(".pay-type").text(getUrlParam('currencyType')) //currencyType  币种
+        $(".pay-name").text(decodeURI(decodeURI(getUrlParam('textId')))) //textId  商户名称
+    var porder=getUrlParam('porder')
+    $("#ewmCode").qrcode({
+        render : "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
+            text : porder,    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
+            width : "150",               //二维码的宽度
+            height : "150",              //二维码的高度
+            background : "#ffffff",       //二维码的后景色
+            foreground : "#000000",        //二维码的前景色
+            src: 'https://lysheng.github.io/sdk/icon.png'             //二维码中间的图片
+        });                  
+    
+</script>
+</html>

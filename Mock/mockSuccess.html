@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>支付结果</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        font-family: "微软雅黑"
+    }
+    .header-box{
+        height: 42px;
+        /* width: 100%; */
+        background:rgba(255,255,255,1);
+        box-shadow:0px 3px 8px 0px rgba(139,139,139,0.14);
+        overflow: hidden;
+        padding: 5px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo{
+        display: block;
+        width: 101px;
+        height: 21px;
+        background: url(./image/logo2.png) no-repeat center center/90%;
+        margin-top: 10px;
+        
+    }
+    .content{
+        padding: 20px;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 71px;
+    }
+    .pay-money{
+        color:rgba(252,160,44,1);
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .pay-type{
+        font-size: 12px;
+        color:rgba(28,28,28,1);
+        font-weight: normal;
+    }
+    .ewm-box{
+        width: 90%;
+        background: rgba(255,255,255,1);
+        box-shadow: 0px 8px 30px -3px rgba(0,0,0,0.14);
+        border-radius: 6px 0px 6px 6px;
+        padding: 47px 5%;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+    }
+    ul,li,p{
+        list-style: none;
+    }
+    .header-tab{
+        color:rgba(64,62,62,1);
+        font-size: 12px;
+        padding: 5px 15px;
+        cursor: pointer;
+    }
+    .header-active{
+        background-color: rgba(243,77,56,1);
+        color: #fff;
+        border-radius: 3px;
+    }
+    .content-left{
+        flex-grow: 1;
+        margin-right: 100px;
+        /* max-width: 750px; */
+    }
+    .content-right{
+        width: 195px;
+        border-radius:3px;
+        border:1px solid rgba(151,151,151,1);
+        padding: 14px;
+    }
+    .vip-header{
+        font-weight:bold;
+        color:rgba(38,38,38,1);
+        font-size: 16px;
+        padding: 13px 0px;
+        border-bottom: 1px dashed rgba(151,151,151,1);
+    }
+    .vip-li{
+        padding: 5px 0px;
+        font-size: 8px;
+    }
+    .vip-nameQ{
+        color:rgba(38,38,38,1);
+        
+    }
+    .vip-nameH{
+        color:#ef4a08f0;
+    }
+    .pay-jg{
+        text-align: center;
+    }
+    .jg-icon{
+        width: 47px;
+        height: 47px;
+        background: url(./image/成功.png)no-repeat center center/95%;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 8px;
+    }
+    .pay-content{
+        margin-top: 50px;
+    }
+    .pay-li-name{
+        font-size: 12px;
+        color: rgba(28,28,28,1);
+       
+    }
+    .pay-li{
+        margin: 14px 0px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .pay-li-right{
+        font-size: 12px;
+        color:rgba(28,28,28,1);
+    }
+</style>
+<body>
+    <div class="box">
+        <!-- <header class="header-box">
+            <span class="logo"></span>
+            <div class="header-rig">
+                <span class="header-tab">vip特权</span>
+                <span class="header-tab header-active">支付中心</span>
+                <span class="header-tab">vip记录</span>
+                <span class="header-tab">返回首页</span>
+            </div>
+        </header> -->
+        <div class="content">
+            <div class="ewm-box">
+                <div class="content-left">
+                   <div class="pay-jg">
+                       <p class="jg-icon"></p>
+                       <span class="jg-text">支付成功</span>
+                   </div>
+                   <div class="pay-content">
+                        <p class="pay-li">
+                            <span class="pay-li-name">付款金额：</span>
+                            <span class="pay-li-right">
+                                <span class="pay-money">99</span>
+                                <span class="pay-type">BAIC</span>
+                            </span>
+                        </p>
+                        <!-- <p class="pay-li">
+                            <span class="pay-li-name">支付方式：</span>
+                            <span class="pay-li-right pay-fs">
+                                   佰贝钱包
+                            </span>
+                        </p> -->
+                        <!-- <p class="pay-li">
+                                <span class="pay-li-name">交易时间：</span>
+                                <span class="pay-li-right pay-fs">
+                                       佰贝钱包
+                                </span>
+                        </p> -->
+                        <p class="pay-li">
+                                <span class="pay-li-name">订单号：</span>
+                                <span class="pay-li-right pay-fs">
+                                       佰贝钱包
+                                </span>
+                        </p>
+                        <!-- <p class="pay-li">
+                                <span class="pay-li-name">交易号：</span>
+                                <span class="pay-li-right pay-fs">
+                                       佰贝钱包
+                                </span>
+                        </p> -->
+                   </div>
+                </div>
+                <!-- <div class="content-right">
+                    <div class="vip-header">
+                        VIP特权介绍
+                    </div>
+                    <ul class="vip-ul">
+                        <li class="vip-li">
+                            <span class="vip-nameQ">会员</span>
+                            <span class="vip-nameH">全站下载</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">超级VIP专享</span>
+                                <span class="vip-nameH">海量</span>
+                                <span class="vip-nameQ">下载体验</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">普通VIP专享</span>
+                                <span class="vip-nameH">10倍</span>
+                                <span class="vip-nameQ">以下体验</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">会员</span>
+                                <span class="vip-nameH">全站下载</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">VIP会员尊贵标识</span>
+                        </li>  
+                        <li class="vip-li">
+                                <span class="vip-nameQ">收藏</span>
+                                <span class="vip-nameH">无限制</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">会员</span>
+                                <span class="vip-nameH">全站下载</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameH">200倍</span>
+                                <span class="vip-nameQ">高速下载通道</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">新功能优先推荐</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">专享智能搜索</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">加速浏览网站</span>
+                        </li>
+                        <li class="vip-li">
+                                <span class="vip-nameQ">优质素材优先推荐</span>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+        
+    </div>
+</body>
+<!-- jq     jq.qrcode   utf为生成二维码得必备js  sdk为调用数据生成二维码得方法   这四个js必须引入 -->
+<!-- index.js为你个人引用得js -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.qrcode.js"></script>
+<script src="../js/utf.js"></script>
+<script>
+    function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        //$(".pay-name").val()   //商户名称 textId  orderNo订单号 idId商户id appKey sdkId nameId商品名称
+        //$(".pay-nei-money").text(getUrlParam('orderAmount')) //orderAmount 金额
+        //$(".pay-type").text(getUrlParam('currencyType')) //currencyType  币种
+        //$(".pay-name").text(getUrlParam('textId')) //textId  商户名称
+
+    console.log(getUrlParam('orderAmount'))
+    console.log(getUrlParam('currencyType'))
+    console.log(getUrlParam('porder'))
+    console.log(decodeURI(decodeURI(getUrlParam('textId'))))
+    var porder=getUrlParam('porder')                
+    
+</script>
+</html>
