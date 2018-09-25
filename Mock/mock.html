@@ -22,7 +22,6 @@ p,ul,li,input,select,option{
     /* 默认鼠标 */
     cursor: default;
 }
-
 input,img{
     margin: 0;
     padding: 0;
@@ -182,8 +181,8 @@ input,img{
         if($("#sdkId").val()==""){
             return alert("sdkId不可为空")
         }
-        appKey=$("#keyId").val()
-        sdkId=$("#sdkId").val()
+        appKey=$("#keyId").val().trim()
+        sdkId=$("#sdkId").val().trim()
         $.ajax({
                 url:urlApi+"/paygateway/sdk/getToken?sdkId="+sdkId+"&appKey="+appKey,
                 type:"get",
@@ -236,14 +235,14 @@ input,img{
             return alert("商品名称不可为空")
         }
         token=$("#tokenId").val();
-        orderAmount=$("#moneyId").val();   //金额
-        orderNo=$("#noId").val();     //订单号
+        orderAmount=$("#moneyId").val().trim();   //金额
+        orderNo=$("#noId").val().trim();     //订单号
         currencyType=$("#bzId option:selected").val();   //币种
-        idId=$("#idId").val()//商户id  idId
-        textId=$("#textId").val()//商户名称 textId
-        appKey=$("#keyId").val()//appKey
-        sdkId=$("#sdkId").val()//sdkId
-        nameId=$("#nameId").val()//商品名称 nameId
+        idId=$("#idId").val().trim()//商户id  idId
+        textId=$("#textId").val().trim()//商户名称 textId
+        appKey=$("#keyId").val().trim()//appKey
+        sdkId=$("#sdkId").val().trim()//sdkId
+        nameId=$("#nameId").val().trim()//商品名称 nameId
             $.ajax({
                 url:urlApi+"/paygateway/sdk/getPorder",
                 type:"post",
