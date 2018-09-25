@@ -34,7 +34,7 @@ input,img{
     margin-top: 50px;
 }
 .li-box{
-    padding: 10px;
+    padding: 10px 0px;
     overflow: hidden;
     width: 100%;
     display: flex;
@@ -247,25 +247,20 @@ input,img{
                 url:urlApi+"/paygateway/sdk/getPorder",
                 type:"post",
                 dataType:"json",
+                async:false, 
                 data:{"token":token,"sdkId":sdkId,"orderAmount":orderAmount,"orderNo":orderNo,"currencyType":currencyType},
                 success:function(data){
                 if(data.success=="true"){
                     console.log(data)
                     window.location.href = './newDemo.html?orderAmount='+orderAmount+'&orderNo='+orderNo+'&currencyType='+currencyType+'&idId='+idId+'&textId='+encodeURI(encodeURI(textId))+'&appKey='+appKey+'&sdkId='+sdkId+'&nameId='+nameId+'&porder='+data.porder;
                 }else{
-                    console.log(data.message)
                     alert(data.message);
                 }
                 },
-                error:function(xhr, ajaxOptions, thrownError){
-                    console.info("error.");
-                        if (xhr.status == 200) {
-                            console.log(ajaxOptions);
-                        }
-                        else {
-                            console.log(xhr.status);
-                            console.log(xhr.responseJSON.error);
-                        }
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log(XMLHttpRequest.status);
+                    console.log(XMLHttpRequest.readyState);
+                    console.log(textStatus);
                 }
             });
     });
