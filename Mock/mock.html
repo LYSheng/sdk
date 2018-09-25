@@ -32,10 +32,16 @@ input,img{
 .ul-box{
     width:100%;
     margin: 0 auto;
+    margin-top: 50px;
 }
 .li-box{
     padding: 10px;
     overflow: hidden;
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
 }
 .select-box,.input-box,.option-name{
     /* margin-top: 5px; */
@@ -46,6 +52,10 @@ input,img{
 }
 .mock-box{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .li-box span{
     display: block;
@@ -76,10 +86,14 @@ input,img{
 .sub-box{
     text-align: center;
 }
+.h-box{
+    width: 100%;
+    text-align: center;
+}
 </style>
 <body>
     <div class="mock-box">
-        <h2>商户模拟交易</h2>
+        <h2 class="h-box">商户模拟交易</h2>
         <ul class="ul-box">
             <li class="li-box">
                 <span>测试类型</span>
@@ -158,7 +172,7 @@ input,img{
 <script>
     var flag=false;
     var urlApi="http://140.143.225.189:8080";
-    var biApi="http://222.73.149.173:8080"
+    var biApi="http://222.73.149.173:8080";
     var sdkId,appKey,token,orderAmount,orderNo,currencyType,idId,textId,nameId='';
     $("#getToken").on("click",function(){
         
