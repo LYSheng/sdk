@@ -195,7 +195,6 @@
                     </div>
                 </div>
         </div>
-        
     </div>
 </body>
 <!-- jq     jq.qrcode   utf为生成二维码得必备js  sdk为调用数据生成二维码得方法   这四个js必须引入 -->
@@ -212,8 +211,14 @@
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
          //商户名称 textId  orderNo订单号 idId商户id appKey sdkId nameId商品名称
-        $(".pay-nei-money").text(getUrlParam('orderAmount')+'.00') //orderAmount 金额
+       
         $(".pay-type").text(getUrlParam('currencyType')) //currencyType  币种
+        var str=getUrlParam('orderAmount')
+       if( str.indexOf(".") != -1 ){
+        $(".pay-nei-money").text(getUrlParam('orderAmount')+'') //orderAmount 金额
+       }else{
+        $(".pay-nei-money").text(getUrlParam('orderAmount')+'.00') //orderAmount 金额
+       }
         $(".pay-name").text(decodeURI(decodeURI(getUrlParam('textId')))) //textId  商户名称
     var porder=getUrlParam('porder')
     $("#ewmCode").qrcode({
