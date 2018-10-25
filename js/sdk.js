@@ -8,7 +8,7 @@
         console.log(iA-iB)
     }
 }
-    var urlApi="http://140.143.225.189:8080"
+    var urlApi="https://papi.nowx.im"
     // if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
     //    console.log("1111111")
     // } else {
@@ -22,7 +22,7 @@
         getData:function (sdkId,appkey,orderAmount,orderNo,currencyType,domId){
             // 获取token
             $.ajax({
-                url:urlApi+"/paygateway/sdk/getToken?sdkId="+sdkId+"&appKey="+appkey,
+                url:urlApi+"/sdk/getToken?sdkId="+sdkId+"&appKey="+appkey,
                 type:"get",
                 // contentType: "application/json",
                 dataType:"json",
@@ -49,7 +49,7 @@
         // 获取二维码
         getCode:function (token,sdkId,orderAmount,orderNo,currencyType,domId){
             $.ajax({
-                url:urlApi+"/paygateway/sdk/getPorder",
+                url:urlApi+"/sdk/getPorder",
                 type:"post",
                 dataType:"json",
                 data:{"token":token,"sdkId":sdkId,"orderAmount":orderAmount,"orderNo":orderNo,"currencyType":currencyType},
@@ -92,7 +92,7 @@
         router:function(porder){
            var time= setInterval(function(){
             $.ajax({
-                url:urlApi+"/paygateway/pos/resultTest",
+                url:urlApi+"/pos/resultTest",
                 // url:"http://10.132.4.65:8080/paygateway/pos/resultTest",// 此地址为查询支付结果地址
                 type:"post",
                 // contentType: "application/json",

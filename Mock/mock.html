@@ -171,8 +171,8 @@ input,img{
 <script src="../js/jquery.min.js"></script>
 <script>
     var flag=false;
-    var urlApi="http://140.143.225.189:8080";
-    var biApi="http://222.73.149.173:8080";
+    var urlApi="https://papi.nowx.im";
+    // var biApi="http://222.73.149.173:8080";
     var sdkId,appKey,token,orderAmount,orderNo,currencyType,idId,textId,nameId='';
     $("#getToken").on("click",function(){
         
@@ -185,7 +185,7 @@ input,img{
         appKey=$("#keyId").val().trim()
         sdkId=$("#sdkId").val().trim()
         $.ajax({
-                url:urlApi+"/paygateway/sdk/getToken?sdkId="+sdkId+"&appKey="+appKey,
+                url:urlApi+"/sdk/getToken?sdkId="+sdkId+"&appKey="+appKey,
                 type:"get",
                 // contentType: "application/json",
                 dataType:"json",
@@ -245,7 +245,7 @@ input,img{
         sdkId=$("#sdkId").val().trim()//sdkId
         nameId=$("#nameId").val().trim()//商品名称 nameId
             $.ajax({
-                url:urlApi+"/paygateway/sdk/getPorder",
+                url:urlApi+"/sdk/getPorder",
                 type:"post",
                 dataType:"json",
                 async:false, 
